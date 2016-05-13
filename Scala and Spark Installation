@@ -1,0 +1,34 @@
+Covers installation of Java, Scala, Git and finally building Spark using sbt tool.
+
+Install Java
+------------
+sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+
+Install Scala
+-------------
+sudo mkdir /usr/local/src/scala
+sudo tar -xvf scala-2.11.8.tgz -C /usr/local/src/scala/
+nano .bashrc
+export SCALA_HOME=/usr/local/src/scala/scala-2.­11.7
+export PATH=$SCALA_HOME/bin:$PATH
+. .bashrc
+
+Install Git
+-----------
+sudo apt-get install git
+
+Build Spark
+-----------
+tar -xvf spark-1.4.1.tgz
+sbt/sbt assembly
+
+# In case you get this error "Building Apache Spark using SBT: Invalid or corrupt jarfile" do the following
+Go to sbt-launch-lib.bash in build folder
+comment line between 46 and 69
+ownload the sbt-launch.jar manually(you can use url2, it may works,or you can download from sbt official website), 
+put it in the same directory, rename it to sbt-launch-0.13.7.jar
+
+then run this command again
+sbt/sbt assembly
