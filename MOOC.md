@@ -1,29 +1,3 @@
-
-
-
-
-<!DOCTYPE html>
-<html lang="en" class=" is-copy-enabled is-u2f-enabled">
-  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
-    <meta charset='utf-8'>
-
-    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-387cfeaa25ac463275aa2c2daaedb1e54d868005181afe4a5e50659e9a19f2bc.css" integrity="sha256-OHz+qiWsRjJ1qiwtqu2x5U2GgAUYGv5KXlBlnpoZ8rw=" media="all" rel="stylesheet" />
-    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-ca9b58477bbdd109d33bb26e79b74b80b46b29715d2811b49daaaebbacd880f0.css" integrity="sha256-yptYR3u90QnTO7JuebdLgLRrKXFdKBG0naquu6zYgPA=" media="all" rel="stylesheet" />
-    
-    
-    
-    
-
-    <link as="script" href="https://assets-cdn.github.com/assets/frameworks-d788212915194925ff3d2ef2cfbaec5dc1333d76cdb222ff551bc0a8c9a23172.js" rel="preload" />
-    
-    <link as="script" href="https://assets-cdn.github.com/assets/github-60427945fb3a23bc232ceee1b89ce28cfa14a19de48dbe75a849af968fa3fa48.js" rel="preload" />
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="viewport" content="width=device-width">
-    
-    
-    <title>awesome-courses/README.md at master · prakhar1989/awesome-courses</title>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
