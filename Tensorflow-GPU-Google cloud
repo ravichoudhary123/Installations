@@ -1,0 +1,55 @@
+This tutorial explains how to apply for access to a Tesla K80 GPU on a google cloud instance, compile+install Tensorflow and IPython, and perform simple style transfer.
+
+Some of the URLs in these commands are truncated because google just thinks they're links.
+
+1. While creating an instance on Google cloud under Management tab just copy this script 
+
+#!/bin/bash
+echo "Checking for CUDA and installing."
+# Check for CUDA and try to install.
+if ! dpkg-query -W cuda; then
+  # The 16.04 installer works with 16.10.
+  curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  dpkg -i ./cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  apt-get update
+  apt-get install cuda -y
+fi
+
+2. In order to access ipython notebook from your local machine run following commands
+  a. sudo apt-get update
+  b. sudo apt-get install ipython
+  c. sudo apt-get install python-pip
+  d. sudo pip install jupyter
+  e. Go to Network setting (https://console.cloud.google.com/networking/firewalls/list?authuser=1) in Google cloud web page 
+     and add new firewall rule. Add name as "jupyter", select targets as "apply to all",  source filter as "0.0.0.0/0" and protocol as "tcp:8888;udp:8888"
+  f. sudo jupyter notebook --ip 0.0.0.0 --port 8888 --allow-root
+  g. Go to your local web browser, take external ip of your instance and paste what you see in last step 
+  This should look like this "<external-ip>:8888/?token=774c61aff68dc247b93eee3968c28598987759bebca0e234"
+ 
+3. sudo pip install numpy scipy matplotlib ipython jupyter pandas sympy nose
+4. sudo apt-get install openjdk-8-jdk git python-dev python-dev python-numpy python-numpy python-six python-six build-essential python-pip python-pip python-virtualenv swig python-wheel python-wheel libcurl3-dev libcupti-dev
+5. Go to this link and fill the survey to download CUDA8.0 toolkit: https://developer.nvidia.com/rdp/form/cudnn-download-survey
+6. After filling the survey you can download CUDA 8.0 toolkit from here https://developer.nvidia.com/cudnn
+7. Extract your cudnn tar download from nvidia site: "tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz"
+8. Copy extraced file 
+  a. sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+  b. sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+  c. sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+9. vim ~/.bashrc and add these two lines
+  export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+  export CUDA_HOME=/usr/local/cuda
+10. Update environment variable using "source ~/.bashrc"
+11. 
+12. Copy latest tensorflow from git "git clone https://github.com/tensorflow/tensorflow"
+13. cd ~/tensorflow
+14. git checkout r1.2
+15. ./configure
+16. (press enter until you get to "Please input the desired Python library path to use.")
+17. (press enter once, then you should be at "Do you wish to build TensorFlow with CUDA support?" to which you can answer "y")
+18. y
+19. bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
+20. bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+21. sudo pip install /tmp/tensorflow_pkg/tensorflow[PRESS TAB TO COMPLETE FILENAME]
+22. (Now quit the SSH window and come back) and enter python
+23. import tensorflow as tf
+if this works means, you have successfully installed tensorflow with gpu support on your cloud instance
